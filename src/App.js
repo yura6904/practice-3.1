@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Films from './components/Films/Films';
 
 function App() {
+  const films = [
+    {
+      name: 'Супермен',
+      path: '../../assets/superman.jpeg',
+      stars: 4,
+      price: 199
+    },
+    {
+      name: 'Одинокий странник',
+      path: '../../assets/lone-runner.jpeg',
+      stars: 2,
+      price: 99
+    }
+  ]
+
+  const createStars = (stars) => {
+    let listElement = []
+      for (let i = 0; i < stars; i++) {
+        listElement.push(
+          <li className="li-star" key={"star" + i}>
+            <span className="material-icons">
+              star_rate
+            </span>
+          </li>
+        )
+      }
+    return listElement
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Films films={films} createStars={createStars}/>
   );
 }
 
